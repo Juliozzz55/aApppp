@@ -24,9 +24,11 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -95,6 +97,35 @@ fun CalendarScreen(vm: CalendarViewModel = viewModel()) {
                         modifier = Modifier.weight(1f)
                     )
                     FilledTonalButton(onClick = { vm.goToToday() }) { Text("Today") }
+                }
+            }
+
+            item(key = "account") {
+                Column {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(
+                            text = vm.session?.email ?: "",
+                            style = MaterialTheme.typography.labelMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                            modifier = Modifier.weight(1f)
+                        )
+                        TextButton(onClick = { vm.signOut() }) { Text("Sign out") }
+                    }
+                    if (vm.busy) {
+                        LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+                    }
+                    vm.message?.let { msg ->
+                        Text(
+                            text = msg,
+                            color = MaterialTheme.colorScheme.error,
+                            style = MaterialTheme.typography.bodySmall,
+                            modifier = Modifier
+                                .padding(top = 4.dp)
+                                .clickable { vm.clearMessage() }
+                        )
+                    }
                 }
             }
 

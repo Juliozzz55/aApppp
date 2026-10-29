@@ -25,3 +25,7 @@ then run `./gradlew assembleRelease`
 Output: app/build/outputs/apk/release/app-release.apk
 
 (If `gradlew` is missing, run `gradle wrapper --gradle-version 8.7` once, or just use Android Studio.)
+
+## Supabase setup (v2)
+1. In `app/src/main/java/com/example/simplecalendar/data/SupabaseApi.kt` set `BASE_URL` to your Supabase Project URL.
+2. In Supabase SQL Editor run the `events` table + RLS policy script, and (optional) turn off "Confirm email".
