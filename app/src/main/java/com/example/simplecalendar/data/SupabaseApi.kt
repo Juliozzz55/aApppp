@@ -11,7 +11,7 @@ import java.time.LocalDate
  * The key below is the PUBLISHABLE key, which is safe to put in an app. Never put a secret/service_role key here.
  */
 object SupabaseConfig {
-    const val BASE_URL = "https://YOUR-PROJECT-REF.supabase.co"
+    const val BASE_URL = "https://khtbrcqqsonudwctsxvw.supabase.co/rest/v1/"
     const val API_KEY = "sb_publishable_S5FZFb15bj4ezc_5zNC2rg_NZadQbNx"
 }
 
